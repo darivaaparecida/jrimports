@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JRImports — Exclusividade que vai além do comum</title>
+<meta name="description" content="JRImports — produtos importados selecionados, qualidade, estilo e uma experiência de compra diferenciada. Eletrônicos, moda, perfumes, acessórios e tecnologia.">
+<meta property="og:title" content="JRImports — Exclusividade que vai além do comum">
+<meta property="og:description" content="Os melhores produtos, selecionados para quem valoriza qualidade, estilo e experiências diferenciadas.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1200&auto=format&fit=crop">
+<meta property="og:locale" content="pt_BR">
+<meta name="theme-color" content="#080808">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23080808'/%3E%3Ctext x='32' y='42' font-family='Arial' font-weight='bold' font-size='30' fill='%23D4AF37' text-anchor='middle'%3EJR%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<!-- INTRO CINEMATOGRÁFICA -->
+<div id="intro" class="intro" aria-hidden="true">
+  <div class="intro-particles"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+  <div class="intro-logo">JR<span>Imports</span></div>
+  <div class="intro-line"></div>
+  <p class="intro-tag">EXCLUSIVIDADE QUE VAI ALÉM DO COMUM</p>
+</div>
+
+<!-- HEADER -->
+<header id="siteHeader" class="header">
+  <div class="container header-inner">
+    <a href="#inicio" class="logo">JR<span>Imports</span></a>
+    <nav class="nav-desktop" aria-label="Menu principal">
+      <a href="#inicio">Início</a>
+      <a href="#produtos">Produtos</a>
+      <a href="#categorias">Categorias</a>
+      <a href="#ofertas">Ofertas</a>
+      <a href="#sobre">Sobre nós</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-btn" id="searchBtn" aria-label="Buscar" title="Buscar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      </button>
+      <button class="icon-btn" id="accountBtn" aria-label="Conta" title="Conta">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-3.5 4.5-5 8-5s6.5 1.5 8 5"/></svg>
+      </button>
+      <button class="icon-btn cart-btn" id="cartBtn" aria-label="Carrinho" title="Carrinho">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 7h12l1.5 13.5a1 1 0 0 1-1 1.1H5.5a1 1 0 0 1-1-1.1L6 7Z"/><path d="M9 10V6a3 3 0 0 1 6 0v4"/></svg>
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+      <a href="#produtos" class="btn btn-gold btn-sm header-cta">Explorar produtos</a>
+      <button class="icon-btn menu-btn" id="menuBtn" aria-label="Abrir menu" title="Menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- MENU MOBILE -->
+<div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+<aside class="mobile-menu" id="mobileMenu" aria-label="Menu móvel">
+  <div class="mobile-menu-head">
+    <span class="logo">JR<span>Imports</span></span>
+    <button class="icon-btn" id="closeMenuBtn" aria-label="Fechar menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </button>
+  </div>
+  <nav class="mobile-nav">
+    <a href="#inicio">Início</a>
+    <a href="#produtos">Produtos</a>
+    <a href="#categorias">Categorias</a>
+    <a href="#ofertas">Ofertas</a>
+    <a href="#sobre">Sobre nós</a>
+    <a href="#contato">Contato</a>
+  </nav>
+  <a href="#produtos" class="btn btn-gold btn-block">Explorar produtos</a>
+  <p class="mobile-menu-foot">Qualidade, exclusividade e uma experiência diferenciada em produtos importados.</p>
+</aside>
+
+<!-- BUSCA -->
+<div class="search-overlay" id="searchOverlay">
+  <div class="search-box">
+    <input type="search" id="searchInput" placeholder="Buscar produtos... ex: fone, perfume, smartwatch" aria-label="Buscar produtos">
+    <button class="btn btn-gold" id="searchGoBtn">Buscar</button>
+    <button class="icon-btn" id="closeSearchBtn" aria-label="Fechar busca">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </button>
+  </div>
+</div>
+
+<main>
+<!-- HERO -->
+<section id="inicio" class="hero">
+  <div class="hero-bg" style="background-image:url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1920&auto=format&fit=crop')"></div>
+  <div class="hero-glow"></div>
+  <div class="container hero-inner">
+    <p class="hero-eyebrow reveal">JRIMPORTS • PRODUTOS IMPORTADOS PREMIUM</p>
+    <h1 class="reveal">EXCLUSIVIDADE QUE<br><span class="gold-text">VAI ALÉM DO COMUM.</span></h1>
+    <p class="hero-sub reveal">Os melhores produtos, selecionados para quem valoriza qualidade, estilo e experiências diferenciadas.</p>
+    <div class="hero-actions reveal">
+      <a href="#produtos" class="btn btn-gold">Explorar produtos</a>
+      <a href="#sobre" class="btn btn-outline">Conhecer a JRImports</a>
+    </div>
+    <div class="hero-trust reveal">
+      <span>Compra segura</span><i></i><span>Curadoria premium</span><i></i><span>Atendimento especializado</span>
+    </div>
+  </div>
+  <a href="#diferenciais" class="scroll-indicator" aria-label="Rolar para baixo"><span></span></a>
+</section>
+
+<!-- DIFERENCIAIS -->
+<section id="diferenciais" class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow">Por que a JRImports</p>
+      <h2>UMA EXPERIÊNCIA À ALTURA<br>DO QUE VOCÊ PROCURA</h2>
+    </div>
+    <div class="grid-4">
+      <article class="diff-card reveal">
+        <div class="diff-num">01</div>
+        <div class="diff-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2 15 8.5 22 9.3 17 14.2 18.5 21 12 17.8 5.5 21 7 14.2 2 9.3 9 8.5Z"/></svg></div>
+        <h3>Produtos Selecionados</h3>
+        <p>Uma curadoria especial de produtos para quem busca qualidade e exclusividade.</p>
+      </article>
+      <article class="diff-card reveal">
+        <div class="diff-num">02</div>
+        <div class="diff-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2 4 5.5V11c0 5 3.5 9.3 8 11 4.5-1.7 8-6 8-11V5.5L12 2Z"/><path d="m9 12 2 2 4-4"/></svg></div>
+        <h3>Compra Segura</h3>
+        <p>Experiência de compra com transparência e segurança.</p>
+      </article>
+      <article class="diff-card reveal">
+        <div class="diff-num">03</div>
+        <div class="diff-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.5L3 21l2-5.6A8.5 8.5 0 1 1 21 11.5Z"/></svg></div>
+        <h3>Atendimento Especializado</h3>
+        <p>Estamos disponíveis para ajudar você em cada etapa.</p>
+      </article>
+      <article class="diff-card reveal">
+        <div class="diff-num">04</div>
+        <div class="diff-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+        <h3>Qualidade e Confiança</h3>
+        <p>Compromisso com produtos e atendimento de qualidade.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- VITRINE -->
+<section id="produtos" class="section section-dark">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow">Vitrine</p>
+      <h2>PRODUTOS EM DESTAQUE</h2>
+      <p class="section-sub">Descubra uma seleção especial de produtos que fazem a diferença.</p>
+    </div>
+    <div class="toolbar reveal">
+      <div class="filters" id="filters">
+        <button class="filter-btn active" data-filter="todos">Todos</button>
+        <button class="filter-btn" data-filter="mais-vendidos">Mais vendidos</button>
+        <button class="filter-btn" data-filter="novidades">Novidades</button>
+        <button class="filter-btn" data-filter="ofertas">Ofertas</button>
+      </div>
+      <div class="toolbar-right">
+        <select id="categorySelect" aria-label="Filtrar por categoria">
+          <option value="todas">Todas as categorias</option>
+        </select>
+        <select id="sortSelect" aria-label="Ordenar produtos">
+          <option value="relevancia">Ordenar: relevância</option>
+          <option value="menor-preco">Menor preço</option>
+          <option value="maior-preco">Maior preço</option>
+          <option value="maior-desconto">Maior desconto</option>
+        </select>
+      </div>
+    </div>
+    <p class="results-info" id="resultsInfo"></p>
+    <div class="products-grid" id="productsGrid"></div>
+    <p class="empty-state" id="emptyState" hidden>Nenhum produto encontrado para essa busca. Tente outro termo ou limpe os filtros.</p>
+  </div>
+</section>
+
+<!-- CATEGORIAS -->
+<section id="categorias" class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow">Navegue por categoria</p>
+      <h2>ENCONTRE O SEU ESTILO</h2>
+      <p class="section-sub">Toque em uma categoria para ver os produtos.</p>
+    </div>
+    <div class="categories-grid" id="categoriesGrid"></div>
+  </div>
+</section>
+
+<!-- BANNER PROMOCIONAL -->
+<section id="ofertas" class="promo">
+  <div class="container promo-inner">
+    <div class="promo-text reveal">
+      <p class="eyebrow">Ofertas especiais</p>
+      <h2>SEU PRÓXIMO PRODUTO<br>FAVORITO ESTÁ AQUI.</h2>
+      <p>Descubra oportunidades especiais e encontre produtos que combinam com você.</p>
+      <button class="btn btn-gold" id="verOfertasBtn">Ver ofertas</button>
+    </div>
+    <div class="promo-img reveal">
+      <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=900&auto=format&fit=crop" alt="Relógio premium em destaque" loading="lazy">
+      <span class="promo-badge">ATÉ 30% OFF</span>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section id="sobre" class="section about">
+  <div class="container about-inner">
+    <div class="about-img reveal">
+      <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=1000&auto=format&fit=crop" alt="Produtos premium JRImports" loading="lazy">
+    </div>
+    <div class="about-text reveal">
+      <p class="eyebrow">Sobre a JRImports</p>
+      <h2>MUITO MAIS QUE UMA LOJA. UMA EXPERIÊNCIA.</h2>
+      <p>A JRImports nasceu com o propósito de oferecer produtos selecionados, qualidade e uma experiência de compra diferenciada. Trabalhamos para conectar você a produtos que unem tecnologia, estilo e praticidade.</p>
+      <ul class="about-list">
+        <li><strong>Curadoria</strong> — cada produto passa por uma seleção criteriosa.</li>
+        <li><strong>Transparência</strong> — preços, estoque e condições claros.</li>
+        <li><strong>Atendimento</strong> — suporte em cada etapa da sua compra.</li>
+      </ul>
+      <a href="#produtos" class="btn btn-gold">Ver produtos</a>
+    </div>
+  </div>
+</section>
+
+<!-- DEPOIMENTOS -->
+<section id="depoimentos" class="section section-dark">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow">Avaliações</p>
+      <h2>QUEM COMPRA, RECOMENDA.</h2>
+      <p class="section-sub">Depoimentos demonstrativos — marcados como exemplo até que avaliações reais sejam cadastradas.</p>
+    </div>
+    <div class="grid-3" id="testimonialsGrid">
+      <article class="testi-card reveal">
+        <span class="testi-tag">Exemplo</span>
+        <div class="stars" aria-label="5 de 5 estrelas">★★★★★</div>
+        <p>“Produto chegou muito bem embalado e a qualidade superou o que eu esperava. Atendimento impecável do início ao fim.”</p>
+        <footer><strong>Mariana S.</strong><span>12/10/2026</span></footer>
+      </article>
+      <article class="testi-card reveal">
+        <span class="testi-tag">Exemplo</span>
+        <div class="stars" aria-label="5 de 5 estrelas">★★★★★</div>
+        <p>“Comprei o fone premium e o som é incrível. A loja transmite confiança e o prazo foi cumprido exatamente.”</p>
+        <footer><strong>Carlos H.</strong><span>28/09/2026</span></footer>
+      </article>
+      <article class="testi-card reveal">
+        <span class="testi-tag">Exemplo</span>
+        <div class="stars" aria-label="4 de 5 estrelas">★★★★☆</div>
+        <p>“Ótima curadoria de produtos importados. Já é a minha segunda compra e recomendo para quem busca algo diferente.”</p>
+        <footer><strong>Beatriz L.</strong><span>03/09/2026</span></footer>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATO / FOOTER -->
+<footer id="contato" class="footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a href="#inicio" class="logo">JR<span>Imports</span></a>
+      <p>Qualidade, exclusividade e uma experiência diferenciada em produtos importados.</p>
+      <div class="social">
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a>
+        <a href="https://wa.me/5500000000000" target="_blank" rel="noopener" aria-label="WhatsApp">WhatsApp</a>
+      </div>
+      <p class="footer-contact" id="footerContact">Atendimento: contato@jrimports.com.br</p>
+    </div>
+    <nav class="footer-col" aria-label="Empresa">
+      <h4>Empresa</h4>
+      <a href="#sobre">Sobre nós</a>
+      <a href="#contato">Contato</a>
+      <a href="#sobre">Nossa história</a>
+    </nav>
+    <nav class="footer-col" aria-label="Atendimento">
+      <h4>Atendimento</h4>
+      <a href="#contato" data-faq="ajuda">Central de ajuda</a>
+      <a href="#contato" data-faq="faq">Perguntas frequentes</a>
+      <a href="#contato" data-faq="troca">Política de troca</a>
+      <a href="#contato" data-faq="privacidade">Política de privacidade</a>
+    </nav>
+    <nav class="footer-col" aria-label="Compras">
+      <h4>Compras</h4>
+      <a href="#produtos">Como comprar</a>
+      <a href="#produtos" data-info="entregas">Entregas</a>
+      <a href="#produtos" data-info="pagamento">Formas de pagamento</a>
+    </nav>
+  </div>
+  <div class="footer-bottom">
+    <div class="container footer-bottom-inner">
+      <p>© <span id="year">2026</span> JRImports. Todos os direitos reservados. <span id="footerCnpj"></span></p>
+      <p class="pay-note">Pagamento confirmado somente pelo provedor real quando configurado. Sem simulação de pagamento.</p>
+    </div>
+  </div>
+</footer>
+</main>
+
+<!-- CARRINHO -->
+<div class="drawer-overlay" id="cartOverlay"></div>
+<aside class="cart-drawer" id="cartDrawer" aria-label="Carrinho de compras">
+  <div class="drawer-head">
+    <h3>Seu carrinho <span id="cartDrawerCount"></span></h3>
+    <button class="icon-btn" id="closeCartBtn" aria-label="Fechar carrinho">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </button>
+  </div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-cep">
+    <label for="cepInput">Calcular frete</label>
+    <div class="cep-row">
+      <input type="text" id="cepInput" placeholder="Digite seu CEP" inputmode="numeric" maxlength="9">
+      <button class="btn btn-outline btn-sm" id="cepBtn">Calcular</button>
+    </div>
+    <p class="cep-msg" id="cepMsg">Frete calculado na finalização, conforme sua região.</p>
+  </div>
+  <div class="cart-totals">
+    <p><span>Subtotal</span><strong id="cartSubtotal">R$ 0,00</strong></p>
+    <p><span>Descontos</span><strong class="gold-text" id="cartDiscount">− R$ 0,00</strong></p>
+    <p class="total-line"><span>Total</span><strong id="cartTotal">R$ 0,00</strong></p>
+  </div>
+  <button class="btn btn-gold btn-block" id="checkoutBtn">Finalizar pedido</button>
+  <button class="btn btn-outline btn-block" id="continueBtn">Continuar comprando</button>
+</aside>
+
+<!-- MODAL PRODUTO -->
+<div class="modal-overlay" id="productModal">
+  <div class="modal product-modal" role="dialog" aria-modal="true" aria-label="Detalhes do produto">
+    <button class="icon-btn modal-close" id="closeProductModal" aria-label="Fechar detalhes">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </button>
+    <div class="product-modal-grid">
+      <div class="pm-gallery">
+        <img id="pmImg" src="" alt="Produto" loading="lazy">
+        <p class="zoom-hint">Passe o mouse para ampliar • clique para zoom</p>
+      </div>
+      <div class="pm-info">
+        <span class="badge" id="pmBadge"></span>
+        <h3 id="pmName"></h3>
+        <p class="pm-category" id="pmCategory"></p>
+        <p class="pm-price"><span id="pmOldPrice"></span><strong id="pmPrice"></strong><em id="pmDiscount"></em></p>
+        <p class="pm-stock" id="pmStock"></p>
+        <p id="pmDesc"></p>
+        <div class="qty-row">
+          <label for="pmQty">Quantidade</label>
+          <div class="qty">
+            <button type="button" id="pmMinus" aria-label="Diminuir quantidade">−</button>
+            <input type="number" id="pmQty" value="1" min="1" max="99">
+            <button type="button" id="pmPlus" aria-label="Aumentar quantidade">+</button>
+          </div>
+        </div>
+        <div class="pm-actions">
+          <button class="btn btn-gold" id="pmAddCart">Adicionar ao carrinho</button>
+          <button class="btn btn-outline" id="pmBuy">Comprar agora</button>
+        </div>
+        <p class="pm-delivery">Entrega: prazo e frete calculados no checkout, conforme seu CEP.</p>
+        <h4>Produtos relacionados</h4>
+        <div class="related" id="pmRelated"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL CHECKOUT -->
+<div class="modal-overlay" id="checkoutModal">
+  <div class="modal checkout-modal" role="dialog" aria-modal="true" aria-label="Finalizar pedido">
+    <button class="icon-btn modal-close" id="closeCheckoutModal" aria-label="Fechar checkout">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </button>
+    <h3>Finalizar pedido</h3>
+    <p class="modal-sub">Preencha seus dados. O pedido será criado com status <strong>Pendente</strong> — o pagamento só é confirmado pelo provedor real quando configurado. Nada é cobrado aqui.</p>
+    <form id="checkoutForm">
+      <div class="form-grid">
+        <label>Nome completo<input type="text" name="nome" required placeholder="Seu nome completo"></label>
+        <label>E-mail<input type="email" name="email" required placeholder="voce@email.com"></label>
+        <label>Telefone / WhatsApp<input type="tel" name="telefone" required placeholder="(00) 00000-0000"></label>
+        <label>CEP<input type="text" name="cep" required placeholder="00000-000" maxlength="9"></label>
+        <label>Endereço<input type="text" name="endereco" required placeholder="Rua, número, bairro"></label>
+        <label>Cidade / UF<input type="text" name="cidade" required placeholder="Cidade - UF"></label>
+      </div>
+      <label class="full">Observações<textarea name="obs" rows="2" placeholder="Alguma observação sobre o pedido? (opcional)"></textarea></label>
+      <p class="checkout-total">Total do pedido: <strong id="checkoutTotal">R$ 0,00</strong></p>
+      <button type="submit" class="btn btn-gold btn-block">Criar pedido pendente</button>
+    </form>
+    <div class="order-success" id="orderSuccess" hidden>
+      <h4>Pedido criado com sucesso!</h4>
+      <p>Número do pedido: <strong id="orderNumber"></strong></p>
+      <p>Status: <strong>Pendente</strong>. Entraremos em contato para confirmar o pagamento pelo provedor real quando configurado.</p>
+      <button class="btn btn-gold btn-block" id="orderSuccessBtn">Voltar à loja</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL CONTA / INFO -->
+<div class="modal-overlay" id="infoModal">
+  <div class="modal info-modal" role="dialog" aria-modal="true" aria-label="Informações">
+    <button class="icon-btn modal-close" id="closeInfoModal" aria-label="Fechar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </button>
+    <h3 id="infoTitle">Informações</h3>
+    <div id="infoBody"></div>
+    <a href="admin.html" class="btn btn-outline btn-block">Abrir painel administrativo</a>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status"></div>
+<script src="app.js"></script>
+</body>
+</html>
