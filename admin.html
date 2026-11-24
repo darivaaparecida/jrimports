@@ -3,144 +3,122 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Admin — JRImports</title>
-<meta name="description" content="Painel administrativo da JRImports: produtos, categorias, pedidos e configurações.">
-<meta name="robots" content="noindex, nofollow">
+<title>Admin — JRImports v2</title>
+<meta name="description" content="Painel administrativo JRImports v2. Dados reais do navegador.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="admin.css">
 </head>
-<body class="admin-body">
-<!-- LOGIN -->
-<div class="admin-login" id="loginScreen">
-  <div class="admin-login-card">
-    <a href="index.html" class="logo">JR<span>Imports</span></a>
-    <p>Painel administrativo</p>
-    <form id="loginForm">
-      <input type="password" id="adminPass" placeholder="Senha de acesso" autocomplete="current-password" required>
-      <button type="submit" class="btn btn-gold btn-block">Entrar no painel</button>
-    </form>
-    <p class="login-hint">Senha inicial: <strong>admin123</strong> — troque-a em Configurações. Painel local demonstrativo, sem backend: os dados ficam neste navegador (localStorage).</p>
-    <p class="login-hint"><a href="index.html" style="color:var(--gold-light)">← Voltar à loja</a></p>
-    <p class="login-hint" id="loginError" style="color:#ff8a8a" hidden>Senha incorreta. Tente novamente.</p>
+<body>
+<div class="admin-login" id="adminLogin">
+  <div class="login-box">
+    <p class="logo"><span class="gold">JR</span>IMPORTS</p>
+    <h1>Painel administrativo</h1>
+    <p>Senha inicial: <strong>admin123</strong> — altere em Configurações.</p>
+    <form id="adminLoginForm"><label>Senha <input type="password" id="adminPass" required autocomplete="current-password"></label><button class="btn btn-gold btn-block" type="submit">Entrar</button><p class="form-msg" id="adminLoginMsg"></p></form>
+    <a href="index.html">← Voltar para a loja</a>
   </div>
 </div>
 
-<!-- PAINEL -->
-<div class="admin-shell" id="adminShell">
-  <header class="admin-top">
-    <div class="container admin-top-inner">
-      <a href="index.html" class="logo">JR<span>Imports</span></a>
-      <nav>
-        <button class="admin-tab active" data-tab="dashboard">Dashboard</button>
-        <button class="admin-tab" data-tab="produtos">Produtos</button>
-        <button class="admin-tab" data-tab="categorias">Categorias</button>
-        <button class="admin-tab" data-tab="pedidos">Pedidos</button>
-        <button class="admin-tab" data-tab="config">Configurações</button>
-      </nav>
-      <button class="btn-mini" id="logoutBtn">Sair</button>
-    </div>
-  </header>
-  <main class="container admin-main">
-    <section class="admin-panel active" id="panel-dashboard">
-      <h2 style="margin-bottom:18px">Dashboard</h2>
-      <div class="stat-grid">
-        <div class="stat-card"><span>Total de vendas</span><strong id="statSales">R$ 0,00</strong></div>
-        <div class="stat-card"><span>Pedidos realizados</span><strong id="statOrders">0</strong></div>
-        <div class="stat-card"><span>Pedidos pendentes</span><strong id="statPending">0</strong></div>
-        <div class="stat-card"><span>Produtos cadastrados</span><strong id="statProducts">0</strong></div>
-        <div class="stat-card"><span>Estoque baixo (≤ 5)</span><strong id="statLow">0</strong></div>
-        <div class="stat-card"><span>Ticket médio</span><strong id="statTicket">R$ 0,00</strong></div>
-      </div>
-      <div class="admin-card">
-        <h3>Produtos mais vendidos</h3>
-        <div class="bar-chart" id="bestSellers"><p style="color:var(--gray)">Nenhuma venda registrada ainda. Os dados aparecem aqui quando houver pedidos.</p></div>
-      </div>
-      <div class="admin-card">
-        <h3>Pedidos recentes</h3>
-        <div class="table-wrap"><table><thead><tr><th>Pedido</th><th>Cliente</th><th>Data</th><th>Total</th><th>Status</th></tr></thead><tbody id="recentOrders"></tbody></table></div>
-      </div>
-      <p style="color:var(--gray);font-size:.88rem">Todos os números acima vêm dos dados reais salvos neste navegador (localStorage). Quando não há dados, o valor é 0 — nenhum número é inventado.</p>
+<div class="admin" id="adminPanel" hidden>
+  <aside class="sidebar">
+    <p class="logo"><span class="gold">JR</span>IMPORTS <small>v2</small></p>
+    <nav>
+      <button class="side-link active" data-tab="dashboard">Dashboard</button>
+      <button class="side-link" data-tab="products">Produtos</button>
+      <button class="side-link" data-tab="orders">Pedidos <span class="count-badge" id="ordersBadge" hidden>0</span></button>
+      <button class="side-link" data-tab="customers">Clientes</button>
+      <button class="side-link" data-tab="coupons">Cupons</button>
+      <button class="side-link" data-tab="settings">Configurações</button>
+    </nav>
+    <a href="index.html">← Ver loja</a>
+    <button class="btn btn-outline btn-sm" id="adminLogout">Sair</button>
+    <p class="hint">Dados reais deste navegador (localStorage). 0 quando vazio — nenhum número é inventado.</p>
+  </aside>
+  <main class="admin-main">
+    <section id="tab-dashboard">
+      <h1>Dashboard</h1><p class="muted">Dados reais registrados na loja. Vendas e faturamento começam em 0.</p>
+      <div class="cards" id="dashCards"></div>
+      <h2>Vendas por dia (últimos 7 dias)</h2>
+      <div class="chart" id="salesChart"></div>
+      <h2>Produtos com estoque baixo (≤ 5)</h2>
+      <div id="lowStock"></div>
+      <button class="btn btn-outline btn-sm" id="exportBtn">Exportar pedidos (JSON)</button>
+      <button class="btn btn-outline btn-sm" id="resetDemoBtn">Restaurar produtos demo</button>
     </section>
 
-    <section class="admin-panel" id="panel-produtos">
-      <h2 style="margin-bottom:18px">Produtos</h2>
-      <div class="admin-card">
-        <h3 id="productFormTitle">Cadastrar produto</h3>
-        <form class="admin-form" id="productForm">
-          <input type="hidden" id="pfId">
-          <label>Nome<input type="text" id="pfName" required placeholder="Ex: Fone Premium"></label>
-          <label>Categoria<select id="pfCategory"></select></label>
-          <label>Preço (R$)<input type="number" id="pfPrice" step="0.01" min="0" required placeholder="899.90"></label>
-          <label>Preço anterior (R$)<input type="number" id="pfOldPrice" step="0.01" min="0" placeholder="1299.90"></label>
-          <label>Estoque<input type="number" id="pfStock" min="0" required placeholder="10"></label>
-          <label>Etiqueta<select id="pfTag"><option value="">Sem etiqueta</option><option>NOVO</option><option>DESTAQUE</option><option>OFERTA</option></select></label>
-          <label><input type="checkbox" id="pfBest" style="width:auto"> Mais vendido</label>
-          <label><input type="checkbox" id="pfNew" style="width:auto"> Novidade</label>
-          <label class="wide">Imagem (URL)<input type="url" id="pfImg" required placeholder="https://images.unsplash.com/..."></label>
-          <label class="wide">Descrição<textarea id="pfDesc" rows="2" required placeholder="Descrição completa do produto"></textarea></label>
-          <button type="submit" class="btn btn-gold">Salvar produto</button>
-          <button type="button" class="btn btn-outline" id="pfCancel">Limpar</button>
-        </form>
-      </div>
-      <div class="admin-card">
-        <h3>Produtos cadastrados</h3>
-        <div class="table-wrap"><table><thead><tr><th>Imagem</th><th>Nome</th><th>Categoria</th><th>Preço</th><th>Estoque</th><th>Ações</th></tr></thead><tbody id="productsTable"></tbody></table></div>
-      </div>
+    <section id="tab-products" hidden>
+      <h1>Produtos</h1>
+      <button class="btn btn-gold" id="newProductBtn">+ Novo produto</button>
+      <div class="table-wrap"><table><thead><tr><th>Produto</th><th>Preço</th><th>Estoque</th><th>SKU</th><th>Categoria</th><th>Ações</th></tr></thead><tbody id="productsTable"></tbody></table></div>
+      <form id="productForm" class="form-card" hidden>
+        <h2 id="productFormTitle">Novo produto</h2>
+        <input type="hidden" id="pfId">
+        <div class="form-grid">
+          <label>Nome* <input id="pfName" required></label>
+          <label>Categoria <select id="pfCategory"></select></label>
+          <label>Preço (R$)* <input id="pfPrice" type="number" step="0.01" min="0" required></label>
+          <label>Preço anterior (R$) <input id="pfOldPrice" type="number" step="0.01" min="0"></label>
+          <label>Estoque* <input id="pfStock" type="number" min="0" required></label>
+          <label>SKU <input id="pfSku"></label>
+          <label>Imagens (URLs, uma por linha) <textarea id="pfImages" rows="3" placeholder="https://..."></textarea></label>
+          <label>Descrição <textarea id="pfDesc" rows="3"></textarea></label>
+          <label>Especificações <textarea id="pfSpecs" rows="2"></textarea></label>
+          <label>Variações (separadas por vírgula) <input id="pfVariations"></label>
+          <label>Data de cadastro <input id="pfCreated" type="date"></label>
+        </div>
+        <label class="check"><input type="checkbox" id="pfFeatured"> Destaque</label>
+        <label class="check"><input type="checkbox" id="pfNew"> Lançamento</label>
+        <label>Etiqueta <input id="pfBadge" placeholder="OFERTA / NOVO"></label>
+        <div><button class="btn btn-gold" type="submit">Salvar produto</button><button class="btn btn-outline" type="button" id="pfCancel">Cancelar</button></div>
+        <p class="form-msg" id="pfMsg"></p>
+      </form>
+      <h2>Categorias</h2>
+      <div id="categoriesAdmin"></div>
+      <form id="categoryForm" class="form-card"><h3>Nova categoria</h3><label>Nome* <input id="cfName" required></label><label>Imagem (URL) <input id="cfImg"></label><label>Descrição <input id="cfDesc"></label><button class="btn btn-gold btn-sm" type="submit">Adicionar categoria</button></form>
     </section>
 
-    <section class="admin-panel" id="panel-categorias">
-      <h2 style="margin-bottom:18px">Categorias</h2>
-      <div class="admin-card">
-        <h3 id="catFormTitle">Criar categoria</h3>
-        <form class="admin-form" id="categoryForm">
-          <input type="hidden" id="cfId">
-          <label>Nome<input type="text" id="cfName" required placeholder="Ex: Perfumes"></label>
-          <label>Descrição<input type="text" id="cfDesc" placeholder="Descrição curta"></label>
-          <label class="wide">Imagem (URL)<input type="url" id="cfImg" required placeholder="https://images.unsplash.com/..."></label>
-          <button type="submit" class="btn btn-gold">Salvar categoria</button>
-          <button type="button" class="btn btn-outline" id="cfCancel">Limpar</button>
-        </form>
-      </div>
-      <div class="admin-card">
-        <h3>Categorias cadastradas</h3>
-        <div class="table-wrap"><table><thead><tr><th>Imagem</th><th>Nome</th><th>Descrição</th><th>Produtos</th><th>Ações</th></tr></thead><tbody id="categoriesTable"></tbody></table></div>
-      </div>
+    <section id="tab-orders" hidden>
+      <h1>Pedidos</h1>
+      <div class="table-wrap"><table><thead><tr><th>Nº</th><th>Cliente</th><th>Total</th><th>Status</th><th>Data</th><th>Ações</th></tr></thead><tbody id="ordersTable"></tbody></table></div>
+      <div id="orderDetail" class="form-card" hidden></div>
     </section>
 
-    <section class="admin-panel" id="panel-pedidos">
-      <h2 style="margin-bottom:18px">Pedidos</h2>
-      <div class="admin-card">
-        <div class="table-wrap"><table><thead><tr><th>Pedido</th><th>Cliente</th><th>Itens</th><th>Total</th><th>Status</th><th>Ações</th></tr></thead><tbody id="ordersTable"></tbody></table></div>
-        <p id="noOrders" style="color:var(--gray)">Nenhum pedido registrado ainda.</p>
-      </div>
+    <section id="tab-customers" hidden>
+      <h1>Clientes</h1>
+      <div class="table-wrap"><table><thead><tr><th>Nome</th><th>E-mail</th><th>Pedidos</th><th>Total gasto</th><th>Último pedido</th></tr></thead><tbody id="customersTable"></tbody></table></div>
     </section>
 
-    <section class="admin-panel" id="panel-config">
-      <h2 style="margin-bottom:18px">Configurações</h2>
-      <div class="admin-card">
-        <h3>Loja e contato</h3>
-        <form class="admin-form" id="settingsForm">
-          <label>E-mail de atendimento<input type="email" id="sfEmail" placeholder="contato@jrimports.com.br"></label>
-          <label>WhatsApp<input type="text" id="sfWhats" placeholder="https://wa.me/5500000000000"></label>
-          <label>CNPJ<input type="text" id="sfCnpj" placeholder="00.000.000/0001-00"></label>
-          <label class="wide">Nova senha do admin<input type="text" id="sfPass" placeholder="Deixe vazio para manter a atual"></label>
-          <button type="submit" class="btn btn-gold">Salvar configurações</button>
-        </form>
-      </div>
-      <div class="admin-card">
-        <h3>Dados</h3>
-        <p style="color:var(--gray);margin-bottom:12px">Os dados da loja ficam salvos neste navegador. Use os botões abaixo com cuidado.</p>
-        <button class="btn btn-outline" id="resetDataBtn">Restaurar produtos e categorias de demonstração</button>
-        <button class="btn btn-outline" id="clearOrdersBtn">Apagar todos os pedidos</button>
-      </div>
-      <p><a href="index.html" style="color:var(--gold-light)">← Voltar à loja</a></p>
+    <section id="tab-coupons" hidden>
+      <h1>Cupons</h1>
+      <form id="couponForm" class="form-card"><h3>Novo cupom</h3><div class="form-grid">
+        <label>Código* <input id="cpCode" required placeholder="EXEMPLO10"></label>
+        <label>Tipo <select id="cpType"><option value="percent">Percentual (%)</option><option value="fixed">Valor fixo (R$)</option></select></label>
+        <label>Valor* <input id="cpValue" type="number" step="0.01" min="0" required></label>
+        <label>Validade <input id="cpValid" type="date"></label>
+        <label>Máx. usos <input id="cpMax" type="number" min="0"></label>
+        <label>Valor mínimo (R$) <input id="cpMin" type="number" step="0.01" min="0"></label>
+      </div><button class="btn btn-gold btn-sm" type="submit">Criar cupom</button></form>
+      <div class="table-wrap"><table><thead><tr><th>Código</th><th>Desconto</th><th>Validade</th><th>Usos</th><th>Status</th><th>Ações</th></tr></thead><tbody id="couponsTable"></tbody></table></div>
+    </section>
+
+    <section id="tab-settings" hidden>
+      <h1>Configurações da loja</h1>
+      <form id="settingsForm" class="form-card"><div class="form-grid">
+        <label>Nome da loja <input id="stName"></label>
+        <label>WhatsApp (só números, com DDD) <input id="stWhatsapp" placeholder="5511999999999"></label>
+        <label>Instagram <input id="stInstagram" placeholder="@jrimports"></label>
+        <label>E-mail <input id="stEmail" type="email"></label>
+        <label>Gateway de pagamento <input id="stGateway"></label>
+        <label>Observação de frete <input id="stShipping"></label>
+        <label>Frete grátis acima de (R$, 0 = desativado) <input id="stFree" type="number" min="0"></label>
+      </div><button class="btn btn-gold" type="submit">Salvar configurações</button><p class="form-msg" id="stMsg"></p></form>
+      <form id="passwordForm" class="form-card"><h3>Alterar senha do admin</h3><label>Senha atual <input id="pwCurrent" type="password" required></label><label>Nova senha <input id="pwNew" type="password" required minlength="6"></label><button class="btn btn-gold btn-sm" type="submit">Alterar senha</button><p class="form-msg" id="pwMsg"></p></form>
+      <div class="form-card"><h3>Dados</h3><p>Exportar ou apagar todos os dados locais desta loja (produtos, pedidos, clientes, cupons).</p><button class="btn btn-outline btn-sm" id="exportAllBtn">Exportar tudo (JSON)</button><button class="btn btn-outline btn-sm" id="wipeBtn">Apagar todos os dados locais</button></div>
     </section>
   </main>
 </div>
-<div class="toast" id="toast" role="status"></div>
+<div class="toast" id="adminToast" role="status" hidden></div>
 <script src="admin.js"></script>
 </body>
 </html>

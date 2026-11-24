@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 Disallow: /admin.html
-Sitemap: https://darivaaparecida.github.io/jrimports/sitemap.xml
+Sitemap: https://darivaaparecida.github.io/jrimports-v2/sitemap.xml
